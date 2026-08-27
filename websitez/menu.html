@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bukluran Cafe - Complete Menu</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-blue);"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+            Bukluran<span>Cafe</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="menu.html" class="active">Full Menu</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="location.html">Location</a></li>
+        </ul>
+        <button class="btn-primary" onclick="toggleModal(true)">
+            View Cart
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+    </nav>
+
+    <section id="menu" class="content-section">
+        <div class="section-header">
+            <div class="section-subtitle">Freshly Prepared</div>
+            <h2 class="section-title">Complete Cafe Menu</h2>
+        </div>
+
+        <div class="menu-tabs">
+            <button class="tab-btn active" data-filter="all">All Items</button>
+            <button class="tab-btn" data-filter="signatures">Signature Drinks</button>
+            <button class="tab-btn" data-filter="espresso">Espresso Classics</button>
+            <button class="tab-btn" data-filter="matcha">Matcha & Tea</button>
+            <button class="tab-btn" data-filter="pastries">Pastries & Food</button>
+        </div>
+
+        <div class="menu-category-block" data-category="signatures">
+            <div class="menu-category-header">
+                <h3>Bukluran Signatures</h3>
+                <span>Special recipes crafted exclusively by our head barista</span>
+            </div>
+            <div class="menu-grid">
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=80" alt="Ka-buklod Espesyal Biscoff">
+                        <span class="food-tag">Bestseller</span>
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Ka-buklod Espesyal Biscoff</h4>
+                            <span class="food-card-price">₱140</span>
+                        </div>
+                        <p class="food-card-desc">Signature double espresso blended with Lotus Biscoff spread, whole milk, silky cold foam, and crumbled cookie toppings.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">16 oz • Cold</div>
+                            <button class="order-btn" onclick="addToCart('Ka-buklod Espesyal Biscoff', 140)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80" alt="Spanish Latte">
+                        <span class="food-tag">Popular</span>
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Bukluran Spanish Latte</h4>
+                            <span class="food-card-price">₱115</span>
+                        </div>
+                        <p class="food-card-desc">Rich espresso poured over a smooth mix of fresh milk and condensed milk for a perfectly balanced sweetness.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">16 oz • Hot / Iced</div>
+                            <button class="order-btn" onclick="addToCart('Bukluran Spanish Latte', 115)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=800&q=80" alt="Salted Caramel Cold Foam">
+                        <span class="food-tag">New</span>
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Salted Caramel Foam Brew</h4>
+                            <span class="food-card-price">₱130</span>
+                        </div>
+                        <p class="food-card-desc">Slow-steeped cold brew coffee topped with thick house-made salted caramel cream foam.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">16 oz • Cold</div>
+                            <button class="order-btn" onclick="addToCart('Salted Caramel Foam Brew', 130)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category-block" data-category="espresso">
+            <div class="menu-category-header">
+                <h3>Espresso Classics</h3>
+                <span>Traditional coffee beverages made with freshly ground beans</span>
+            </div>
+            <div class="menu-grid">
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80" alt="Americano">
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Classic Americano</h4>
+                            <span class="food-card-price">₱85</span>
+                        </div>
+                        <p class="food-card-desc">Double shot espresso diluted with hot or cold water, revealing subtle notes of cocoa and toasted nuts.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">12 oz / 16 oz</div>
+                            <button class="order-btn" onclick="addToCart('Classic Americano', 85)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80" alt="Cafe Latte">
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Caffè Latte</h4>
+                            <span class="food-card-price">₱100</span>
+                        </div>
+                        <p class="food-card-desc">Smooth espresso combined with steamed milk and a thin layer of delicate microfoam on top.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">16 oz • Hot / Iced</div>
+                            <button class="order-btn" onclick="addToCart('Caffè Latte', 100)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=800&q=80" alt="Caramel Macchiato">
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Caramel Macchiato</h4>
+                            <span class="food-card-price">₱125</span>
+                        </div>
+                        <p class="food-card-desc">Vanilla-infused steamed milk marked with espresso and generous drizzle of sweet caramel syrup.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">16 oz • Hot / Iced</div>
+                            <button class="order-btn" onclick="addToCart('Caramel Macchiato', 125)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category-block" data-category="matcha">
+            <div class="menu-category-header">
+                <h3>Matcha & Tea Specialty</h3>
+                <span>Authentic Japanese ceremonial matcha and fruit tea infusions</span>
+            </div>
+            <div class="menu-grid">
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=800&q=80" alt="Matcha Latte">
+                        <span class="food-tag">Top Rated</span>
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Uji Matcha Latte</h4>
+                            <span class="food-card-price">₱120</span>
+                        </div>
+                        <p class="food-card-desc">Traditional bamboo-whisked Japanese matcha green tea combined with creamy milk and subtle sweetness.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">16 oz • Hot / Iced</div>
+                            <button class="order-btn" onclick="addToCart('Uji Matcha Latte', 120)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80" alt="Strawberry Matcha">
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Strawberry Matcha Cloud</h4>
+                            <span class="food-card-price">₱135</span>
+                        </div>
+                        <p class="food-card-desc">Layers of real strawberry puree, cold whole milk, and whisked matcha green tea foam.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">16 oz • Cold</div>
+                            <button class="order-btn" onclick="addToCart('Strawberry Matcha Cloud', 135)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80" alt="Peach Fruit Tea">
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Iced Peach Fruit Tea</h4>
+                            <span class="food-card-price">₱95</span>
+                        </div>
+                        <p class="food-card-desc">Freshly brewed black tea infused with sweet peach nectar and served over ice cubes with lemon slices.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">16 oz • Cold</div>
+                            <button class="order-btn" onclick="addToCart('Iced Peach Fruit Tea', 95)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category-block" data-category="pastries">
+            <div class="menu-category-header">
+                <h3>Fresh Pastries & Snacks</h3>
+                <span>Baked in-house daily to complement your favorite beverages</span>
+            </div>
+            <div class="menu-grid">
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80" alt="Butter Croissant">
+                        <span class="food-tag">Fresh Daily</span>
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Butter Croissant</h4>
+                            <span class="food-card-price">₱85</span>
+                        </div>
+                        <p class="food-card-desc">Flaky, golden-brown French butter croissant, baked fresh every morning and served warm upon request.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">1 Piece • Warm</div>
+                            <button class="order-btn" onclick="addToCart('Butter Croissant', 85)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80" alt="Chocolate Chunk Cookie">
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Dark Choco Chunk Cookie</h4>
+                            <span class="food-card-price">₱65</span>
+                        </div>
+                        <p class="food-card-desc">Soft-baked thick cookie packed with chunks of Belgian dark chocolate and sea salt flakes.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">1 Large Cookie</div>
+                            <button class="order-btn" onclick="addToCart('Dark Choco Chunk Cookie', 65)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-card-img-container">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Cheese Toasted Sandwich">
+                    </div>
+                    <div class="food-card-content">
+                        <div class="food-card-title-row">
+                            <h4 class="food-card-title">Grilled Cheese Toastie</h4>
+                            <span class="food-card-price">₱120</span>
+                        </div>
+                        <p class="food-card-desc">Thick artisan sourdough slice filled with melted cheddar, mozzarella, and garlic butter spread.</p>
+                        <div class="food-card-footer">
+                            <div class="food-card-meta">Savory Bite</div>
+                            <button class="order-btn" onclick="addToCart('Grilled Cheese Toastie', 120)">Add To Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-body">
+            <button class="close-modal" onclick="toggleModal(false)">&times;</button>
+            <h3 class="modal-title">Your Cafe Order</h3>
+            <div id="modalCartContent">
+                <ul class="order-summary-list" id="cartList"></ul>
+                <div class="order-total-row">
+                    <span>Total Amount:</span>
+                    <span id="cartTotal" style="color: var(--accent-blue);">₱0</span>
+                </div>
+            </div>
+
+            <form style="margin-top: 1.5rem;" onsubmit="handleCheckout(event)">
+                <div class="form-group">
+                    <label>Customer Name</label>
+                    <input type="text" required placeholder="Enter full name">
+                </div>
+                <div class="form-group">
+                    <label>Contact Phone Number</label>
+                    <input type="tel" required placeholder="09XX XXX XXXX">
+                </div>
+                <div class="form-group">
+                    <label>Order Notes / Preferences</label>
+                    <textarea rows="2" placeholder="e.g., Less ice, extra sugar..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+                    Confirm Order Pickup
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">Bukluran<span>Cafe</span></a>
+                <p>Your go-to neighborhood cafe delivering delicious yet accessible coffee, specialty matcha, and baked treats in Dasmariñas, Cavite.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Bukluran Cafe Luzviminda 2. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+</html>
