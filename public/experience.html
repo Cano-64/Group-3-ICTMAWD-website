@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bukluran Cafe - Interactive Experience</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="experience.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-blue);"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+            Bukluran<span>Cafe</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="experience.html" class="active">Experience</a></li>
+            <li><a href="menu.html">Full Menu</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="location.html">Location</a></li>
+        </ul>
+        <a href="menu.html" class="btn-primary">Order Online</a>
+    </nav>
+
+    <section id="explore" class="sticky-section">
+        <div class="section-header">
+            <div class="section-subtitle">Interactive Tour</div>
+            <h2 class="section-title">Scroll To Explore Cafe Features</h2>
+        </div>
+        
+        <div class="interactive-container">
+            <div class="steps-wrapper">
+                <div class="step-card active" data-step="1">
+                    <div class="step-number">Step 01 / Quality</div>
+                    <h3>Customer Rating & Reputation</h3>
+                    <p>Verified ratings across Google Reviews and Facebook demonstrate high customer satisfaction regarding taste, atmosphere, and service speed.</p>
+                </div>
+
+                <div class="step-card" data-step="2">
+                    <div class="step-number">Step 02 / Hours</div>
+                    <h3>Weekly Operating Schedule</h3>
+                    <p>Open Tuesday through Sunday from 12:00 PM until 10:00 PM. Closed Mondays for maintenance and deep cleaning routines.</p>
+                </div>
+
+                <div class="step-card" data-step="3">
+                    <div class="step-number">Step 03 / Location</div>
+                    <h3>Congressional Avenue Spot</h3>
+                    <p>Situated conveniently along Congressional Avenue inside Luzviminda 2, Unit J&K, with dedicated street parking spaces.</p>
+                </div>
+
+                <div class="step-card" data-step="4">
+                    <div class="step-number">Step 04 / Menu</div>
+                    <h3>Signature Drinks & Bestsellers</h3>
+                    <p>Featuring our customer favorite Ka-buklod Espesyal Biscoff series alongside rich matcha options and savory baked pastries.</p>
+                </div>
+
+                <div class="step-card" data-step="5">
+                    <div class="step-number">Step 05 / Atmosphere</div>
+                    <h3>Extended Cafe Extension</h3>
+                    <p>Our recent expansion provides additional air-conditioned indoor tables and relaxed outdoor seating options for larger groups.</p>
+                </div>
+            </div>
+
+            <div class="preview-sticky">
+                <div class="display-panel active" id="panel-1">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Cafe Community" class="panel-image">
+                    <div class="big-stat">4.6★</div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">55 Google Customer Reviews</p>
+                    <ul class="detail-list">
+                        <li>Facebook Rating <span>5.0 / 5 Stars</span></li>
+                        <li>Price Range <span>₱1 – ₱500</span></li>
+                        <li>Visit Duration <span>30 min – 2 hours</span></li>
+                    </ul>
+                </div>
+
+                <div class="display-panel" id="panel-2">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Coffee Pour" class="panel-image">
+                    <div class="big-stat">12 PM - 10 PM</div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Tuesday to Sunday</p>
+                    <ul class="detail-list">
+                        <li>Monday Status <span>Closed</span></li>
+                        <li>Peak Afternoon Hours <span>3:00 PM – 6:00 PM</span></li>
+                        <li>Peak Evening Hours <span>7:00 PM – 9:30 PM</span></li>
+                    </ul>
+                </div>
+
+                <div class="display-panel" id="panel-3">
+                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80" alt="Map View" class="panel-image">
+                    <div class="big-stat">Unit J & K</div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">23-IN, B1 L34 C Congressional Ave</p>
+                    <ul class="detail-list">
+                        <li>Barangay <span>Luzviminda 2</span></li>
+                        <li>Municipality <span>Dasmariñas, Cavite</span></li>
+                        <li>Phone Contact <span>0917 969 3440</span></li>
+                    </ul>
+                </div>
+
+                <div class="display-panel" id="panel-4">
+                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80" alt="Signature Coffee" class="panel-image">
+                    <div class="big-stat">Biscoff Series</div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Customer Favorite Pick</p>
+                    <ul class="detail-list">
+                        <li>Signature Coffee <span>Ka-buklod Espesyal</span></li>
+                        <li>Non-Coffee Pick <span>Premium Matcha Latte</span></li>
+                        <li>Pastry Special <span>Warm Croissants</span></li>
+                    </ul>
+                </div>
+
+                <div class="display-panel" id="panel-5">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80" alt="Cafe Seating" class="panel-image">
+                    <div class="big-stat">Spacious</div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Indoor & Outdoor Seating</p>
+                    <ul class="detail-list">
+                        <li>Air Conditioning <span>Full Coverage</span></li>
+                        <li>Power Outlets <span>Available at Tables</span></li>
+                        <li>High Speed Wi-Fi <span>Complimentary</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">Bukluran<span>Cafe</span></a>
+                <p>Your go-to neighborhood cafe delivering delicious yet accessible coffee, specialty matcha, and baked treats in Dasmariñas, Cavite.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Bukluran Cafe Luzviminda 2. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="experience.js"></script>
+</body>
+</html>

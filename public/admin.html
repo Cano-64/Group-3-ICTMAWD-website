@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bukluran Cafe - Control Panel</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div id="auth-panel" class="login-wrapper">
+    <div class="card">
+      <h2 style="margin-top: 0;">Admin Portal</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Sign in using your administrative credentials.</p>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="admin-user">Email or Username</label>
+          <input type="text" id="admin-user" required placeholder="admin@buklurancafe.com or admin">
+        </div>
+        <div class="form-group">
+          <label for="admin-pass">Password</label>
+          <input type="password" id="admin-pass" required placeholder="••••••••">
+        </div>
+        <div id="auth-error" style="color: #f87171; font-size: 0.85rem; margin-bottom: 1rem; display: none;">Invalid credentials</div>
+        <button type="submit" class="btn-primary" style="width: 100%;">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="dashboard-panel" class="dashboard-container hidden">
+    <aside class="sidebar">
+      <h3 style="margin: 0; color: var(--accent-blue);">Bukluran Admin</h3>
+      <ul class="sidebar-nav">
+        <li><button class="nav-btn active" data-target="menu-manager">Menu Inventory</button></li>
+        <li><button class="nav-btn" data-target="orders-manager">Customer Submissions</button></li>
+      </ul>
+      <button id="logout-btn" class="btn-danger" style="margin-top: auto;">Log Out</button>
+    </aside>
+
+    <main class="main-content">
+      <section id="menu-manager">
+        <h2>Menu Catalog</h2>
+        <form id="add-menu-form" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; background: var(--bg-card); padding: 1.5rem; border-radius: var(--card-radius); border: 1px solid var(--border-color);">
+          <div class="form-group">
+            <label>Item Name</label>
+            <input type="text" id="menu-name" required placeholder="Spanish Latte">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="menu-category" required>
+              <option value="espresso">Espresso Drinks</option>
+              <option value="matcha">Specialty Matcha</option>
+              <option value="tea">Signature Teas</option>
+              <option value="bakery">Pastries & Bites</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Price (PHP)</label>
+            <input type="number" id="menu-price" step="0.01" required placeholder="140.00">
+          </div>
+          <div class="form-group">
+            <label>Badge / Tag</label>
+            <input type="text" id="menu-badge" placeholder="Best Seller">
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Description</label>
+            <textarea id="menu-desc" rows="2" placeholder="Item description and ingredients"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="align-self: flex-end;">Save to Inventory</button>
+        </form>
+
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Badge</th>
+                <th>Controls</th>
+              </tr>
+            </thead>
+            <tbody id="menu-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="orders-manager" class="hidden">
+        <h2>Live Orders & Inquiries</h2>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Customer</th>
+                <th>Details</th>
+                <th>Controls</th>
+              </tr>
+            </thead>
+            <tbody id="submissions-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

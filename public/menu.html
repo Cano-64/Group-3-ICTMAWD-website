@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bukluran Cafe - Interactive Menu</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-blue);"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+            Bukluran<span>Cafe</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="menu.html" class="active">Full Menu</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="location.html">Location</a></li>
+        </ul>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <button id="open-cart-nav" class="cart-nav-btn" type="button" aria-label="View Cart">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span id="nav-cart-badge" class="cart-badge-counter">0</span>
+            </button>
+            <a href="admin.html" class="btn-primary">Dashboard</a>
+        </div>
+    </nav>
+
+    <section class="content-section" style="max-width: 1200px; margin: 0 auto; padding: 2rem 1rem;">
+        <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+            <div class="section-subtitle">Fresh Selection</div>
+            <h2 class="section-title">Specialty Beverages & Confections</h2>
+        </div>
+
+        <div class="menu-controls">
+            <div class="category-tabs">
+                <button class="tab-btn active" data-category="all" type="button">All Items</button>
+                <button class="tab-btn" data-category="latte" type="button">Cafe Latte</button>
+                <button class="tab-btn" data-category="amerikano" type="button">Amerikano</button>
+                <button class="tab-btn" data-category="milk-tea" type="button">Milk Tea</button>
+                <button class="tab-btn" data-category="frappe" type="button">Frappes</button>
+                <button class="tab-btn" data-category="fruit-soda" type="button">Fruit & Soda</button>
+                <button class="tab-btn" data-category="bakery" type="button">Food & Pastries</button>
+            </div>
+            <div class="search-box">
+                <input type="text" id="menu-search" placeholder="Search beverages and food...">
+            </div>
+        </div>
+
+        <div id="catalog-grid" class="menu-grid"></div>
+    </section>
+
+    <div id="cart-drawer-overlay" class="cart-overlay">
+        <aside class="cart-panel">
+            <div class="cart-header">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-blue);"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <h3 style="margin: 0; font-size: 1.25rem;">Your Cart</h3>
+                </div>
+                <button type="button" id="close-cart-btn" class="modal-close">&times;</button>
+            </div>
+
+            <div id="cart-items-wrapper" class="cart-items-list"></div>
+
+            <div class="cart-footer">
+                <div class="cart-summary-total">
+                    <span style="color: var(--text-muted);">Total:</span>
+                    <span id="cart-grand-total" style="color: var(--accent-blue); font-weight: 700; font-size: 1.35rem;">₱0.00</span>
+                </div>
+                <button type="button" id="cart-checkout-btn" class="btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Proceed to Order</button>
+            </div>
+        </aside>
+    </div>
+
+    <div id="order-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <span style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Order Details</span>
+                    <h3 id="modal-title">Confirm Your Order</h3>
+                </div>
+                <button type="button" class="modal-close" id="close-modal-btn">&times;</button>
+            </div>
+
+            <div class="order-summary-box">
+                <div id="modal-order-summary" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 0.75rem 0;">
+                <div class="order-summary-row">
+                    <span>Order Total</span>
+                    <span id="modal-total-price">₱0.00</span>
+                </div>
+            </div>
+
+            <form id="order-form">
+                <div class="form-group">
+                    <label for="customer-name">Pickup Name</label>
+                    <input type="text" id="customer-name" required placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="order-notes">Special Instructions</label>
+                    <input type="text" id="order-notes" placeholder="e.g., Less ice, 50% sugar, toasted bread">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancel-order-btn">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="toast-notification">Order placed successfully.</div>
+
+    <script src="admin.js"></script>
+    <script>
+        let cart = [];
+        let menuItems = [];
+
+        const cartOverlay = document.getElementById("cart-drawer-overlay");
+        const cartItemsWrapper = document.getElementById("cart-items-wrapper");
+        const cartTotalDisplay = document.getElementById("cart-grand-total");
+        const navBadge = document.getElementById("nav-cart-badge");
+        const modal = document.getElementById("order-modal");
+        const orderForm = document.getElementById("order-form");
+        const toast = document.getElementById("toast");
+        const grid = document.getElementById("catalog-grid");
+        const searchInput = document.getElementById("menu-search");
+        const tabs = document.querySelectorAll(".tab-btn");
+
+        function showToast(text) {
+            toast.textContent = text;
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 3000);
+        }
+
+        function toggleCart(open) {
+            cartOverlay.classList.toggle("active", open);
+        }
+
+        document.getElementById("open-cart-nav").addEventListener("click", () => toggleCart(true));
+        document.getElementById("close-cart-btn").addEventListener("click", () => toggleCart(false));
+        cartOverlay.addEventListener("click", (e) => {
+            if (e.target === cartOverlay) toggleCart(false);
+        });
+
+        function addToCart(item) {
+            const existing = cart.find(c => c.id === item.id);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+            updateCartUI();
+            showToast(`Added ${item.name} to cart.`);
+        }
+
+        function changeQuantity(id, delta) {
+            const entry = cart.find(c => c.id === id);
+            if (!entry) return;
+            entry.quantity += delta;
+            if (entry.quantity <= 0) {
+                cart = cart.filter(c => c.id !== id);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            navBadge.textContent = count;
+            navBadge.style.display = count > 0 ? "flex" : "none";
+
+            if (cart.length === 0) {
+                cartItemsWrapper.innerHTML = `
+                    <div style="text-align: center; color: var(--text-muted); margin-top: 3rem;">
+                        <p>Your cart is empty.</p>
+                        <small>Add items from the menu.</small>
+                    </div>
+                `;
+                cartTotalDisplay.textContent = "₱0.00";
+                return;
+            }
+
+            let total = 0;
+            cartItemsWrapper.innerHTML = cart.map(item => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                return `
+                    <div class="cart-item-row">
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.95rem;">${item.name}</div>
+                            <small style="color: var(--text-muted);">₱${Number(item.price).toFixed(2)} each</small>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <button type="button" class="cart-qty-btn" onclick="changeQuantity(${item.id}, -1)">-</button>
+                            <span style="font-weight: 600; min-width: 1.25rem; text-align: center;">${item.quantity}</span>
+                            <button type="button" class="cart-qty-btn" onclick="changeQuantity(${item.id}, 1)">+</button>
+                            <span style="font-weight: 700; color: var(--accent-blue); min-width: 4rem; text-align: right;">₱${Number(subtotal).toFixed(2)}</span>
+                        </div>
+                    </div>
+                `;
+            }).join("");
+
+            cartTotalDisplay.textContent = `₱${total.toFixed(2)}`;
+        }
+
+        document.getElementById("cart-checkout-btn").addEventListener("click", () => {
+            if (cart.length === 0) {
+                showToast("Your cart is empty.");
+                return;
+            }
+            toggleCart(false);
+
+            const summaryWrapper = document.getElementById("modal-order-summary");
+            let total = 0;
+            summaryWrapper.innerHTML = cart.map(item => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                return `
+                    <div class="order-summary-row">
+                        <span>${item.quantity}x ${item.name}</span>
+                        <span>₱${subtotal.toFixed(2)}</span>
+                    </div>
+                `;
+            }).join("");
+
+            document.getElementById("modal-total-price").textContent = `₱${total.toFixed(2)}`;
+            modal.classList.add("active");
+            document.getElementById("customer-name").focus();
+        });
+
+        document.getElementById("close-modal-btn").addEventListener("click", () => modal.classList.remove("active"));
+        document.getElementById("cancel-order-btn").addEventListener("click", () => modal.classList.remove("active"));
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) modal.classList.remove("active");
+        });
+
+        orderForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            if (cart.length === 0) return;
+
+            const name = document.getElementById("customer-name").value.trim();
+            const notes = document.getElementById("order-notes").value.trim();
+            const itemsString = cart.map(c => `${c.quantity}x ${c.name}`).join(", ");
+            const detailsText = notes ? `${itemsString} | Notes: ${notes}` : itemsString;
+
+            const record = {
+                timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+                customer: name,
+                details: detailsText
+            };
+
+            await insertRecord("submissions", record);
+            cart = [];
+            updateCartUI();
+            modal.classList.remove("active");
+            orderForm.reset();
+            showToast(`Order confirmed for ${name}. Live queue updated.`);
+        });
+
+        function populateGrid(itemsToRender) {
+            grid.innerHTML = "";
+            if (!itemsToRender || itemsToRender.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 4rem 1rem;">
+                        <h3>No items found in this section</h3>
+                        <p>Try picking another category or clear your search input.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            itemsToRender.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "menu-card";
+                card.innerHTML = `
+                    ${item.badge ? `<span class="badge-tag">${item.badge}</span>` : ""}
+                    <div>
+                        <h3>${item.name}</h3>
+                        <p>${item.desc || "Prepared fresh to order using Bukluran recipes."}</p>
+                    </div>
+                    <div class="card-foot">
+                        <span class="price">₱${Number(item.price).toFixed(2)}</span>
+                        <button type="button" class="btn-primary add-cart-btn">Add to Cart</button>
+                    </div>
+                `;
+                card.querySelector(".add-cart-btn").addEventListener("click", () => addToCart(item));
+                grid.appendChild(card);
+            });
+        }
+
+        function filterItems() {
+            const query = searchInput.value.trim().toLowerCase();
+            const activeTab = document.querySelector(".tab-btn.active");
+            const activeCategory = activeTab ? activeTab.dataset.category : "all";
+
+            return menuItems.filter(item => {
+                const matchesCategory = activeCategory === "all" || item.category === activeCategory;
+                const matchesSearch = item.name.toLowerCase().includes(query) || (item.desc && item.desc.toLowerCase().includes(query));
+                return matchesCategory && matchesSearch;
+            });
+        }
+
+        function switchCategoryTab(targetTab) {
+            tabs.forEach(t => t.classList.remove("active"));
+            targetTab.classList.add("active");
+
+            grid.classList.add("switching");
+            setTimeout(() => {
+                populateGrid(filterItems());
+                grid.classList.remove("switching");
+            }, 120);
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                if (tab.classList.contains("active")) return;
+                switchCategoryTab(tab);
+            });
+        });
+
+        searchInput.addEventListener("input", () => {
+            populateGrid(filterItems());
+        });
+
+        async function displayStoreCatalog() {
+            try {
+                menuItems = await getAllRecords("menu");
+                populateGrid(filterItems());
+                updateCartUI();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", displayStoreCatalog);
+    </script>
+</body>
+</html>
